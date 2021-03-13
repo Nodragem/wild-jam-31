@@ -20,8 +20,8 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=728
-window/size/height=938
+window/size/width=1920
+window/size/height=1080
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
