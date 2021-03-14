@@ -4,12 +4,12 @@ signal hit()
 export var speed = 400  # How fast the player will move (pixels/sec).
 var screen_size  # Size of the game window.
 var screen_position
-onready var camera:Camera2D = get_node("../Camera/Camera2D")
+onready var camera_rig:Node2D = get_node("../Camera")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	DebugStats.add_property(self, "position", "round")
+	#DebugStats.add_property(self, "position", "round")
 	#hide()
 
 
@@ -32,7 +32,7 @@ func _process(delta):
 	
 	position += velocity * delta
 	
-	screen_position = camera.position
+	screen_position = camera_rig.position - screen_size/2
 	position.x = clamp(position.x, screen_position.x, 
 		screen_position.x + screen_size.x)
 	position.y = clamp(position.y, screen_position.y, 
