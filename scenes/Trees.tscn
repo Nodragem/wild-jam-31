@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Trees.gd" type="Script" id=1]
+[ext_resource path="res://art/tree2.png" type="Texture" id=2]
+[ext_resource path="res://art/tree1.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "tree1",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "tree2",
+"speed": 0.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 47.7113
+height = 53.8412
+
+[node name="Trees" type="StaticBody2D"]
+position = Vector2( 3.21231, -99.5555 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 25.4271 )
+frames = SubResource( 1 )
+animation = "tree2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.83075, 89.1947 )
+shape = SubResource( 2 )

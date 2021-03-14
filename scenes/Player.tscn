@@ -28,11 +28,6 @@ animations = [ {
 "name": "idle_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "idle_walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "idle_up",
@@ -42,13 +37,18 @@ animations = [ {
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "idle_walk",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 21.8121
 height = 50.522
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="KinematicBody2D"]
 position = Vector2( -2.82843, -14.1421 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -62,4 +62,3 @@ animation = "idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 4.40976, 11.9692 )
 shape = SubResource( 2 )
-[connection signal="body_exited" from="." to="." method="_on_Player_body_exited"]

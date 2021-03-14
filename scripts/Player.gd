@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 signal hit()
 
 export var speed = 400  # How fast the player will move (pixels/sec).
@@ -30,8 +30,7 @@ func _process(delta):
 	else:
 		$AnimatedSprite.stop()
 	
-	position += velocity * delta
-	
+	move_and_slide(velocity)
 	screen_position = camera_rig.position - screen_size/2
 	position.x = clamp(position.x, screen_position.x, 
 		screen_position.x + screen_size.x)
@@ -54,9 +53,9 @@ func _process(delta):
 
 
 func _on_Player_body_exited(_body):
-	hide()  # Player disappears after being hit.
+	
 	emit_signal("hit")
-	$CollisionShape2D.set_deferred("disabled", true)
+	
 
 func start(pos):
 	position = pos
