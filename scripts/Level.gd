@@ -7,7 +7,6 @@ export var nb_trees = 10
 # var a = 2
 # var b = "text"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var rand = RandomNumberGenerator.new()

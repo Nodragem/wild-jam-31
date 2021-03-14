@@ -4,20 +4,46 @@
 [ext_resource path="res://art/font/Ranchers-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 70
+size = 50
 font_data = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="Message" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -960.0
+margin_right = 960.0
+margin_bottom = 952.0
 custom_fonts/font = SubResource( 1 )
-text = "testv"
-align = 1
-valign = 1
+text = "John is a hazelnut farmer.
+As every morning, John woke up and got ready to eat his breakfast.
+But that morning, SOMETHINGD'S MISSING  on the breakfast table...
+
+His jar of hazelnut and cacao spread is NOWHERE TO BE FOUND!!
+
+John realises that his hazelnut farm got infested by hazelnut weevil over night, they stole his jar of hazelnut spread, and they stole his stock of (eco-friendly) pesticide!
+
+Damned hazelnut weevil! \"Le balanin des noisettes\" John remembers the voice of his French great grand mother... Going in the attic, John finds the ancestral family weapon against hazelnut weevil: the mighty OREGANO gun!
+
+John is now ready to claim his field and his jar of hazelnut spread back!"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StartButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -138.0
+margin_top = -70.0
+margin_right = 138.0
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
