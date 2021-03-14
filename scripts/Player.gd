@@ -3,10 +3,13 @@ signal hit()
 
 export var speed = 400  # How fast the player will move (pixels/sec).
 var screen_size  # Size of the game window.
+var screen_position
+onready var camera:Camera2D = get_node("../Camera/Camera2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	DebugStats.add_property(self, "position", "round")
 	#hide()
 
 
@@ -28,8 +31,12 @@ func _process(delta):
 		$AnimatedSprite.stop()
 	
 	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	
+	screen_position = camera.position
+	position.x = clamp(position.x, screen_position.x, 
+		screen_position.x + screen_size.x)
+	position.y = clamp(position.y, screen_position.y, 
+		screen_position.y + screen_size.y)
 	
 	if velocity.x != 0:
 		$AnimatedSprite.animation = "walk"

@@ -1,7 +1,6 @@
 extends Node2D
 
 onready var camera:Camera2D = $Camera2D
-onready var label:Label = $Label
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -9,4 +8,3 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position += Vector2.UP * 300 * delta
-	label.text = str(position)

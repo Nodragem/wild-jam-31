@@ -17,7 +17,10 @@ _global_script_class_icons={
 
 config/name="Wild-jam- 31"
 run/main_scene="res://scenes/Level.tscn"
-config/icon="res://icon.png"
+
+[autoload]
+
+DebugStats="*res://scenes/DebugStats.tscn"
 
 [display]
 
