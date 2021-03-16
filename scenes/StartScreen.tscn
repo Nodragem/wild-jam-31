@@ -13,13 +13,14 @@ script = ExtResource( 2 )
 [node name="Message" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -960.0
-margin_right = 960.0
-margin_bottom = 952.0
+margin_left = -940.0
+margin_top = 20.0
+margin_right = 940.0
+margin_bottom = 972.0
 custom_fonts/font = SubResource( 1 )
 text = "John is a hazelnut farmer.
 As every morning, John woke up and got ready to eat his breakfast.
-But that morning, SOMETHINGD'S MISSING  on the breakfast table...
+But that morning, SOMETHING'S MISSING  on the breakfast table...
 
 His jar of hazelnut and cacao spread is NOWHERE TO BE FOUND!!
 
@@ -38,9 +39,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -138.0
-margin_top = -70.0
-margin_right = 138.0
+margin_left = 666.0
+margin_top = -92.0
+margin_right = 942.0
+margin_bottom = -22.0
 custom_fonts/font = SubResource( 1 )
 text = "Start"
 __meta__ = {

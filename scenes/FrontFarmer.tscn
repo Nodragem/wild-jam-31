@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://art/farmer/front_view/hand_left.png" type="Texture" id=1]
 [ext_resource path="res://art/farmer/front_view/Body.png" type="Texture" id=2]
@@ -28,15 +28,57 @@
 [ext_resource path="res://art/farmer/back_view/slice1.png" type="Texture" id=26]
 [ext_resource path="res://art/farmer/side_view/right_leg.png" type="Texture" id=27]
 [ext_resource path="res://art/farmer/back_view/left_leg.png" type="Texture" id=28]
-[ext_resource path="res://scenes/Camera.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=30]
 
-[sub_resource type="Animation" id=1]
-resource_name = "back_idle"
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 21.8121
+height = 40.0228
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "back_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "front_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "front_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "side_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/back_walk/node = SubResource( 19 )
+states/back_walk/position = Vector2( 221, 376 )
+states/front_idle/node = SubResource( 2 )
+states/front_idle/position = Vector2( 221, 228 )
+states/front_walk/node = SubResource( 3 )
+states/front_walk/position = Vector2( 221, 96 )
+states/side_walk/node = SubResource( 4 )
+states/side_walk/position = Vector2( 8, 228 )
+transitions = [ "front_idle", "front_walk", SubResource( 5 ), "front_walk", "front_idle", SubResource( 6 ), "front_idle", "back_walk", SubResource( 7 ), "back_walk", "front_idle", SubResource( 8 ), "side_walk", "front_idle", SubResource( 9 ), "front_idle", "side_walk", SubResource( 10 ) ]
+start_node = "front_idle"
+graph_offset = Vector2( -186, 14.7214 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+
+[sub_resource type="Animation" id=13]
 length = 0.1
 loop = true
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("front_view/front_body:visible")
+tracks/0/path = NodePath("front_body:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,7 +90,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("back_view/back_body:visible")
+tracks/1/path = NodePath("back_body:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -60,7 +102,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("back_view/back_body/slice2:position")
+tracks/2/path = NodePath("back_body/slice2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -72,7 +114,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1.94531, -93.7243 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("back_view/back_body:position")
+tracks/3/path = NodePath("back_body:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -84,7 +126,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1.19475, 40.3888 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("back_view/back_body/weapon_tank:position")
+tracks/4/path = NodePath("back_body/weapon_tank:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -96,7 +138,7 @@ tracks/4/keys = {
 "values": [ Vector2( -2.27902, -49.341 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("back_view/back_body/head:position")
+tracks/5/path = NodePath("back_body/head:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -108,7 +150,7 @@ tracks/5/keys = {
 "values": [ Vector2( -1.27789, -54.6803 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("back_view/back_body/slice1:position")
+tracks/6/path = NodePath("back_body/slice1:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -120,7 +162,7 @@ tracks/6/keys = {
 "values": [ Vector2( -51.6681, 47.7687 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("back_view/back_body/hand_right:position")
+tracks/7/path = NodePath("back_body/hand_right:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -132,7 +174,7 @@ tracks/7/keys = {
 "values": [ Vector2( -51.6681, 31.4169 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("back_view/back_body/slice3:position")
+tracks/8/path = NodePath("back_body/slice3:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -144,7 +186,7 @@ tracks/8/keys = {
 "values": [ Vector2( -2.01431, -64.1698 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("back_view/back_body/weapon_front:position")
+tracks/9/path = NodePath("back_body/weapon_front:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -156,7 +198,7 @@ tracks/9/keys = {
 "values": [ Vector2( -57.0074, 23.7415 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("back_view/back_body/right_leg:position")
+tracks/10/path = NodePath("back_body/right_leg:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -168,7 +210,7 @@ tracks/10/keys = {
 "values": [ Vector2( 24.4178, 74.4655 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("back_view/back_body/left_leg:position")
+tracks/11/path = NodePath("back_body/left_leg:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -180,7 +222,7 @@ tracks/11/keys = {
 "values": [ Vector2( -21.3005, 74.7992 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("side_view/side_body:visible")
+tracks/12/path = NodePath("side_body:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -192,13 +234,12 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "back_walk"
+[sub_resource type="Animation" id=14]
 length = 0.4
 loop = true
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("front_view/front_body:visible")
+tracks/0/path = NodePath("front_body:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -210,7 +251,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("back_view/back_body:visible")
+tracks/1/path = NodePath("back_body:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -222,7 +263,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("back_view/back_body/slice2:position")
+tracks/2/path = NodePath("back_body/slice2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -234,7 +275,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1.94531, -93.7243 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("back_view/back_body:position")
+tracks/3/path = NodePath("back_body:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -246,7 +287,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1.19475, 40.3888 ), Vector2( 1.195, 27 ), Vector2( 1.19475, 40.3888 ), Vector2( 1.195, 27 ), Vector2( 1.19475, 40.3888 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("back_view/back_body/weapon_tank:position")
+tracks/4/path = NodePath("back_body/weapon_tank:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -258,7 +299,7 @@ tracks/4/keys = {
 "values": [ Vector2( -2.27902, -49.341 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("back_view/back_body/head:position")
+tracks/5/path = NodePath("back_body/head:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -270,7 +311,7 @@ tracks/5/keys = {
 "values": [ Vector2( -1.27789, -54.6803 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("back_view/back_body/slice1:position")
+tracks/6/path = NodePath("back_body/slice1:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -282,7 +323,7 @@ tracks/6/keys = {
 "values": [ Vector2( -51.6681, 47.7687 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("back_view/back_body/hand_right:position")
+tracks/7/path = NodePath("back_body/hand_right:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -294,7 +335,7 @@ tracks/7/keys = {
 "values": [ Vector2( -51.6681, 31.4169 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("back_view/back_body/slice3:position")
+tracks/8/path = NodePath("back_body/slice3:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -306,7 +347,7 @@ tracks/8/keys = {
 "values": [ Vector2( -2.01431, -64.1698 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("back_view/back_body/weapon_front:position")
+tracks/9/path = NodePath("back_body/weapon_front:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -318,7 +359,7 @@ tracks/9/keys = {
 "values": [ Vector2( -57.0074, 23.7415 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("back_view/back_body/right_leg:position")
+tracks/10/path = NodePath("back_body/right_leg:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -330,7 +371,7 @@ tracks/10/keys = {
 "values": [ Vector2( 24.418, 53 ), Vector2( 24.418, 75 ), Vector2( 24.418, 53 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("back_view/back_body/left_leg:position")
+tracks/11/path = NodePath("back_body/left_leg:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -342,7 +383,7 @@ tracks/11/keys = {
 "values": [ Vector2( -21.3005, 74.7992 ), Vector2( -21.3, 53 ), Vector2( -21.3005, 74.7992 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("side_view/side_body:visible")
+tracks/12/path = NodePath("side_body:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -354,13 +395,12 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "front_idle"
+[sub_resource type="Animation" id=15]
 length = 0.1
 loop = true
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("front_view/front_body/left_leg2:position")
+tracks/0/path = NodePath("front_body/left_leg2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -372,7 +412,7 @@ tracks/0/keys = {
 "values": [ Vector2( 20, 75 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("front_view/front_body/left_leg2:rotation_degrees")
+tracks/1/path = NodePath("front_body/left_leg2:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -384,7 +424,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("front_view/front_body:position")
+tracks/2/path = NodePath("front_body:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -396,7 +436,7 @@ tracks/2/keys = {
 "values": [ Vector2( -0.869888, 40.2757 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("front_view/front_body:rotation_degrees")
+tracks/3/path = NodePath("front_body:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -408,7 +448,7 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("front_view/front_body/hand_left:position")
+tracks/4/path = NodePath("front_body/hand_left:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -420,7 +460,7 @@ tracks/4/keys = {
 "values": [ Vector2( -49.2575, 32.0863 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("front_view/front_body/hand_left:rotation_degrees")
+tracks/5/path = NodePath("front_body/hand_left:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -432,7 +472,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("front_view/front_body/hose:position")
+tracks/6/path = NodePath("front_body/hose:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -444,7 +484,7 @@ tracks/6/keys = {
 "values": [ Vector2( -32.8395, 51.2819 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("front_view/front_body/hose:rotation_degrees")
+tracks/7/path = NodePath("front_body/hose:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -456,7 +496,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("front_view/front_body/weapon_front:position")
+tracks/8/path = NodePath("front_body/weapon_front:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -468,7 +508,7 @@ tracks/8/keys = {
 "values": [ Vector2( -39.7166, 24.229 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("front_view/front_body/weapon_front:rotation_degrees")
+tracks/9/path = NodePath("front_body/weapon_front:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -480,7 +520,7 @@ tracks/9/keys = {
 "values": [ 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("front_view/front_body/head:position")
+tracks/10/path = NodePath("front_body/head:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -492,7 +532,7 @@ tracks/10/keys = {
 "values": [ Vector2( 2.93695, -67.2516 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("front_view/front_body/head:rotation_degrees")
+tracks/11/path = NodePath("front_body/head:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -504,7 +544,7 @@ tracks/11/keys = {
 "values": [ 0.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("front_view/front_body/left_leg:position")
+tracks/12/path = NodePath("front_body/left_leg:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -516,7 +556,7 @@ tracks/12/keys = {
 "values": [ Vector2( -20, 75 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("front_view/front_body/left_leg:rotation_degrees")
+tracks/13/path = NodePath("front_body/left_leg:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -528,7 +568,7 @@ tracks/13/keys = {
 "values": [ 0.0 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("front_view/front_body/hand_right:position")
+tracks/14/path = NodePath("front_body/hand_right:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -540,7 +580,7 @@ tracks/14/keys = {
 "values": [ Vector2( -0.991669, 25.3515 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("front_view/front_body/hand_right:rotation_degrees")
+tracks/15/path = NodePath("front_body/hand_right:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -552,7 +592,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("front_view/front_body/weapon_tank:position")
+tracks/16/path = NodePath("front_body/weapon_tank:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -564,7 +604,7 @@ tracks/16/keys = {
 "values": [ Vector2( 0.0240326, -50.7516 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("front_view/front_body/weapon_tank:rotation_degrees")
+tracks/17/path = NodePath("front_body/weapon_tank:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -576,7 +616,7 @@ tracks/17/keys = {
 "values": [ 0.0 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("front_view/front_body:visible")
+tracks/18/path = NodePath("front_body:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -588,7 +628,7 @@ tracks/18/keys = {
 "values": [ true ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("back_view/back_body:visible")
+tracks/19/path = NodePath("back_body:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -600,7 +640,7 @@ tracks/19/keys = {
 "values": [ false ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("side_view/side_body:visible")
+tracks/20/path = NodePath("side_body:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -612,12 +652,12 @@ tracks/20/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=16]
 length = 0.4
 loop = true
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("front_view/front_body/left_leg2:position")
+tracks/0/path = NodePath("front_body/left_leg2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -629,7 +669,7 @@ tracks/0/keys = {
 "values": [ Vector2( 20, 53 ), Vector2( 20, 75 ), Vector2( 20, 53 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("front_view/front_body/left_leg2:rotation_degrees")
+tracks/1/path = NodePath("front_body/left_leg2:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -641,7 +681,7 @@ tracks/1/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("front_view/front_body:position")
+tracks/2/path = NodePath("front_body:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -653,7 +693,7 @@ tracks/2/keys = {
 "values": [ Vector2( -0.869888, 40.2757 ), Vector2( -0.869888, 27.5621 ), Vector2( -0.869888, 40.2757 ), Vector2( -0.869888, 27.5621 ), Vector2( -0.869888, 40.2757 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("front_view/front_body:rotation_degrees")
+tracks/3/path = NodePath("front_body:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -665,7 +705,7 @@ tracks/3/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("front_view/front_body/hand_left:position")
+tracks/4/path = NodePath("front_body/hand_left:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -677,7 +717,7 @@ tracks/4/keys = {
 "values": [ Vector2( -49.2575, 32.0863 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("front_view/front_body/hand_left:rotation_degrees")
+tracks/5/path = NodePath("front_body/hand_left:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -689,7 +729,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("front_view/front_body/hose:position")
+tracks/6/path = NodePath("front_body/hose:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -701,7 +741,7 @@ tracks/6/keys = {
 "values": [ Vector2( -32.8395, 51.2819 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("front_view/front_body/hose:rotation_degrees")
+tracks/7/path = NodePath("front_body/hose:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -713,7 +753,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("front_view/front_body/weapon_front:position")
+tracks/8/path = NodePath("front_body/weapon_front:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -725,7 +765,7 @@ tracks/8/keys = {
 "values": [ Vector2( -39.7166, 24.229 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("front_view/front_body/weapon_front:rotation_degrees")
+tracks/9/path = NodePath("front_body/weapon_front:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -737,7 +777,7 @@ tracks/9/keys = {
 "values": [ 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("front_view/front_body/head:position")
+tracks/10/path = NodePath("front_body/head:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -749,7 +789,7 @@ tracks/10/keys = {
 "values": [ Vector2( 2.93695, -67.2516 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("front_view/front_body/head:rotation_degrees")
+tracks/11/path = NodePath("front_body/head:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -761,7 +801,7 @@ tracks/11/keys = {
 "values": [ 0.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("front_view/front_body/left_leg:position")
+tracks/12/path = NodePath("front_body/left_leg:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -773,7 +813,7 @@ tracks/12/keys = {
 "values": [ Vector2( -20, 75 ), Vector2( -20, 53.586 ), Vector2( -20, 75 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("front_view/front_body/left_leg:rotation_degrees")
+tracks/13/path = NodePath("front_body/left_leg:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -785,7 +825,7 @@ tracks/13/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("front_view/front_body/hand_right:position")
+tracks/14/path = NodePath("front_body/hand_right:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -797,7 +837,7 @@ tracks/14/keys = {
 "values": [ Vector2( -0.991669, 25.3515 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("front_view/front_body/hand_right:rotation_degrees")
+tracks/15/path = NodePath("front_body/hand_right:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -809,7 +849,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("front_view/front_body/weapon_tank:position")
+tracks/16/path = NodePath("front_body/weapon_tank:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -821,7 +861,7 @@ tracks/16/keys = {
 "values": [ Vector2( 0.0240326, -50.7516 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("front_view/front_body/weapon_tank:rotation_degrees")
+tracks/17/path = NodePath("front_body/weapon_tank:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -833,7 +873,7 @@ tracks/17/keys = {
 "values": [ 0.0 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("front_view/front_body:visible")
+tracks/18/path = NodePath("front_body:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -845,7 +885,7 @@ tracks/18/keys = {
 "values": [ true ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("back_view/back_body:visible")
+tracks/19/path = NodePath("back_body:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -857,7 +897,7 @@ tracks/19/keys = {
 "values": [ false ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("side_view/side_body:visible")
+tracks/20/path = NodePath("side_body:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -869,13 +909,12 @@ tracks/20/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "side_idle"
+[sub_resource type="Animation" id=17]
 length = 0.1
 loop = true
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("front_view/front_body:visible")
+tracks/0/path = NodePath("front_body:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -887,7 +926,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("back_view/back_body:visible")
+tracks/1/path = NodePath("back_body:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -899,7 +938,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("side_view/side_body:visible")
+tracks/2/path = NodePath("side_body:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -911,7 +950,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("side_view/side_body/weapon_front:position")
+tracks/3/path = NodePath("side_body/weapon_front:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -923,7 +962,7 @@ tracks/3/keys = {
 "values": [ Vector2( 56.541, 23.4073 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("side_view/side_body/left_leg:position")
+tracks/4/path = NodePath("side_body/left_leg:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -935,7 +974,7 @@ tracks/4/keys = {
 "values": [ Vector2( -16.032, 75 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("side_view/side_body/hand_right:position")
+tracks/5/path = NodePath("side_body/hand_right:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -947,7 +986,7 @@ tracks/5/keys = {
 "values": [ Vector2( 65.8113, 24.4668 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("side_view/side_body/right_leg:position")
+tracks/6/path = NodePath("side_body/right_leg:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -959,7 +998,7 @@ tracks/6/keys = {
 "values": [ Vector2( 12.309, 75 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("side_view/side_body/hand_left:position")
+tracks/7/path = NodePath("side_body/hand_left:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -971,7 +1010,7 @@ tracks/7/keys = {
 "values": [ Vector2( 21.3139, 42.4777 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("side_view/side_body:position")
+tracks/8/path = NodePath("side_body:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -983,7 +1022,7 @@ tracks/8/keys = {
 "values": [ Vector2( 0, 40.375 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("side_view/side_body/hose:position")
+tracks/9/path = NodePath("side_body/hose:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -995,7 +1034,7 @@ tracks/9/keys = {
 "values": [ Vector2( -17.6212, 49.3641 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("side_view/side_body/weapon_tank:position")
+tracks/10/path = NodePath("side_body/weapon_tank:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -1007,7 +1046,7 @@ tracks/10/keys = {
 "values": [ Vector2( -43.3132, -45.7227 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("side_view/side_body/head:position")
+tracks/11/path = NodePath("side_body/head:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -1019,13 +1058,12 @@ tracks/11/keys = {
 "values": [ Vector2( 31.3789, -67.4417 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "side_walk"
+[sub_resource type="Animation" id=18]
 length = 0.4
 loop = true
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("front_view/front_body:visible")
+tracks/0/path = NodePath("front_body:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1037,7 +1075,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("back_view/back_body:visible")
+tracks/1/path = NodePath("back_body:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1049,7 +1087,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("side_view/side_body:visible")
+tracks/2/path = NodePath("side_body:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1061,7 +1099,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("side_view/side_body/weapon_front:position")
+tracks/3/path = NodePath("side_body/weapon_front:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1073,7 +1111,7 @@ tracks/3/keys = {
 "values": [ Vector2( 56.541, 23.4073 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("side_view/side_body/left_leg:position")
+tracks/4/path = NodePath("side_body/left_leg:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1085,7 +1123,7 @@ tracks/4/keys = {
 "values": [ Vector2( -16.3155, 56.5478 ), Vector2( -2.84962, 39.2929 ), Vector2( 9.49387, 55.4872 ), Vector2( -16.3155, 56.5478 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("side_view/side_body/hand_right:position")
+tracks/5/path = NodePath("side_body/hand_right:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -1097,7 +1135,7 @@ tracks/5/keys = {
 "values": [ Vector2( 65.8113, 24.4668 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("side_view/side_body/right_leg:position")
+tracks/6/path = NodePath("side_body/right_leg:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -1109,7 +1147,7 @@ tracks/6/keys = {
 "values": [ Vector2( 11.6152, 56.5478 ), Vector2( -18.0833, 56.5478 ), Vector2( -3.73405, 38.262 ), Vector2( 11.6152, 56.5478 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("side_view/side_body/hand_left:position")
+tracks/7/path = NodePath("side_body/hand_left:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -1121,7 +1159,7 @@ tracks/7/keys = {
 "values": [ Vector2( 21.3139, 42.4777 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("side_view/side_body:position")
+tracks/8/path = NodePath("side_body:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -1133,7 +1171,7 @@ tracks/8/keys = {
 "values": [ Vector2( 0, 27 ), Vector2( 0, 40.375 ), Vector2( 0, 27 ), Vector2( 0, 40.375 ), Vector2( 0, 27 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("side_view/side_body/hose:position")
+tracks/9/path = NodePath("side_body/hose:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -1145,7 +1183,7 @@ tracks/9/keys = {
 "values": [ Vector2( -17.6212, 49.3641 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("side_view/side_body/weapon_tank:position")
+tracks/10/path = NodePath("side_body/weapon_tank:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -1157,7 +1195,7 @@ tracks/10/keys = {
 "values": [ Vector2( -43.3132, -45.7227 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("side_view/side_body/head:position")
+tracks/11/path = NodePath("side_body/head:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -1169,7 +1207,7 @@ tracks/11/keys = {
 "values": [ Vector2( 31.3789, -67.4417 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("side_view/side_body/left_leg:rotation_degrees")
+tracks/12/path = NodePath("side_body/left_leg:rotation_degrees")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -1181,7 +1219,7 @@ tracks/12/keys = {
 "values": [ 41.6148, 3.62251, -34.3698, 41.6148 ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("side_view/side_body/right_leg:rotation_degrees")
+tracks/13/path = NodePath("side_body/right_leg:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -1193,7 +1231,15 @@ tracks/13/keys = {
 "values": [ -40.9447, 31.1544, -4.89513, -40.9447 ]
 }
 
-[node name="Farmer" type="Node2D"]
+[node name="Farmer" type="KinematicBody2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 30 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.24707, 21.1616 )
+scale = Vector2( 2, 2 )
+z_index = 1
+shape = SubResource( 1 )
 
 [node name="FirePositionUP" type="Node2D" parent="."]
 position = Vector2( -60, 43 )
@@ -1207,150 +1253,162 @@ position = Vector2( 108.179, 49.7272 )
 [node name="FirePositionLEFT" type="Node2D" parent="."]
 position = Vector2( -108.179, 49.727 )
 
-[node name="front_view" type="Node" parent="."]
-
-[node name="front_body" type="Sprite" parent="front_view"]
-visible = false
-position = Vector2( -0.869888, 40.2757 )
+[node name="front_body" type="Sprite" parent="."]
+position = Vector2( -0.869888, 27.5646 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="weapon_tank" type="Sprite" parent="front_view/front_body"]
+[node name="weapon_tank" type="Sprite" parent="front_body"]
 show_behind_parent = true
 position = Vector2( 0.0240326, -50.7516 )
 texture = ExtResource( 16 )
 
-[node name="hose" type="Sprite" parent="front_view/front_body"]
+[node name="hose" type="Sprite" parent="front_body"]
 show_behind_parent = true
 position = Vector2( -32.8395, 51.2819 )
 texture = ExtResource( 3 )
 
-[node name="head" type="Sprite" parent="front_view/front_body"]
+[node name="head" type="Sprite" parent="front_body"]
 position = Vector2( 2.93695, -67.2516 )
 texture = ExtResource( 6 )
 
-[node name="left_leg" type="Sprite" parent="front_view/front_body"]
-position = Vector2( -20, 75 )
+[node name="left_leg" type="Sprite" parent="front_body"]
+position = Vector2( -20, 70.36 )
 texture = ExtResource( 13 )
 
-[node name="left_leg2" type="Sprite" parent="front_view/front_body"]
-position = Vector2( 20, 53 )
+[node name="left_leg2" type="Sprite" parent="front_body"]
+position = Vector2( 20, 57.767 )
 texture = ExtResource( 13 )
 
-[node name="hand_right" type="Sprite" parent="front_view/front_body"]
+[node name="hand_right" type="Sprite" parent="front_body"]
 position = Vector2( -0.991669, 25.3515 )
 texture = ExtResource( 22 )
 
-[node name="hand_left" type="Sprite" parent="front_view/front_body"]
+[node name="hand_left" type="Sprite" parent="front_body"]
 position = Vector2( -49.2575, 32.0863 )
 texture = ExtResource( 1 )
 
-[node name="weapon_front" type="Sprite" parent="front_view/front_body"]
+[node name="weapon_front" type="Sprite" parent="front_body"]
 position = Vector2( -39.7166, 24.229 )
 texture = ExtResource( 17 )
 
-[node name="side_view" type="Node" parent="."]
-
-[node name="side_body" type="Sprite" parent="side_view"]
+[node name="side_body" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, 27 )
+position = Vector2( 0, 31.4529 )
 texture = ExtResource( 25 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="hand_right" type="Sprite" parent="side_view/side_body"]
+[node name="hand_right" type="Sprite" parent="side_body"]
 position = Vector2( 65.8113, 24.4668 )
 texture = ExtResource( 14 )
 
-[node name="hose" type="Sprite" parent="side_view/side_body"]
+[node name="hose" type="Sprite" parent="side_body"]
 position = Vector2( -17.6212, 49.3641 )
 texture = ExtResource( 23 )
 
-[node name="weapon_front" type="Sprite" parent="side_view/side_body"]
+[node name="weapon_front" type="Sprite" parent="side_body"]
 position = Vector2( 56.541, 23.4073 )
 texture = ExtResource( 8 )
 
-[node name="hand_left" type="Sprite" parent="side_view/side_body"]
+[node name="hand_left" type="Sprite" parent="side_body"]
 position = Vector2( 21.3139, 42.4777 )
 texture = ExtResource( 4 )
 
-[node name="right_leg" type="Sprite" parent="side_view/side_body"]
+[node name="right_leg" type="Sprite" parent="side_body"]
 show_behind_parent = true
-position = Vector2( 11.6152, 56.5478 )
-rotation = -0.714619
+position = Vector2( 6.50498, 50.4599 )
+rotation = -0.505146
 texture = ExtResource( 27 )
 offset = Vector2( 0.693812, 18.4522 )
 
-[node name="left_leg" type="Sprite" parent="side_view/side_body"]
+[node name="left_leg" type="Sprite" parent="side_body"]
 show_behind_parent = true
-position = Vector2( -16.3155, 56.5478 )
-rotation = 0.726316
+position = Vector2( -12.0191, 56.3712 )
+rotation = 0.505553
 texture = ExtResource( 11 )
 offset = Vector2( 0.283535, 18.4522 )
 
-[node name="weapon_tank" type="Sprite" parent="side_view/side_body"]
+[node name="weapon_tank" type="Sprite" parent="side_body"]
 position = Vector2( -43.3132, -45.7227 )
 texture = ExtResource( 9 )
 
-[node name="head" type="Sprite" parent="side_view/side_body"]
+[node name="head" type="Sprite" parent="side_body"]
 position = Vector2( 31.3789, -67.4417 )
 texture = ExtResource( 21 )
 
-[node name="back_view" type="Node" parent="."]
-
-[node name="back_body" type="Sprite" parent="back_view"]
-position = Vector2( 1.19475, 40.3888 )
+[node name="back_body" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1.19477, 39.1183 )
 texture = ExtResource( 19 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="head" type="Sprite" parent="back_view/back_body"]
+[node name="head" type="Sprite" parent="back_body"]
 show_behind_parent = true
 position = Vector2( -1.27789, -54.6803 )
 texture = ExtResource( 12 )
 
-[node name="slice3" type="Sprite" parent="back_view/back_body"]
+[node name="slice3" type="Sprite" parent="back_body"]
 position = Vector2( -2.01431, -64.1698 )
 texture = ExtResource( 20 )
 
-[node name="slice2" type="Sprite" parent="back_view/back_body"]
+[node name="slice2" type="Sprite" parent="back_body"]
 position = Vector2( -1.94531, -93.7243 )
 texture = ExtResource( 5 )
 
-[node name="weapon_tank" type="Sprite" parent="back_view/back_body"]
+[node name="weapon_tank" type="Sprite" parent="back_body"]
 position = Vector2( -2.27902, -49.341 )
 texture = ExtResource( 15 )
 
-[node name="weapon_front" type="Sprite" parent="back_view/back_body"]
+[node name="weapon_front" type="Sprite" parent="back_body"]
 show_behind_parent = true
 position = Vector2( -57.0074, 23.7415 )
 texture = ExtResource( 18 )
 
-[node name="hand_right" type="Sprite" parent="back_view/back_body"]
+[node name="hand_right" type="Sprite" parent="back_body"]
 show_behind_parent = true
 position = Vector2( -51.6681, 31.4169 )
 texture = ExtResource( 10 )
 
-[node name="slice1" type="Sprite" parent="back_view/back_body"]
+[node name="slice1" type="Sprite" parent="back_body"]
 show_behind_parent = true
 position = Vector2( -51.6681, 47.7687 )
 texture = ExtResource( 26 )
 
-[node name="left_leg" type="Sprite" parent="back_view/back_body"]
-position = Vector2( -21.3005, 74.7992 )
+[node name="left_leg" type="Sprite" parent="back_body"]
+position = Vector2( -21.3005, 74.1937 )
 texture = ExtResource( 28 )
 
-[node name="right_leg" type="Sprite" parent="back_view/back_body"]
-position = Vector2( 24.4178, 74.4655 )
+[node name="right_leg" type="Sprite" parent="back_body"]
+position = Vector2( 24.418, 53.6111 )
 texture = ExtResource( 7 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "side_walk"
-anims/back_idle = SubResource( 1 )
-anims/back_walk = SubResource( 2 )
-anims/front_idle = SubResource( 3 )
-anims/front_walk = SubResource( 4 )
-anims/side_idle = SubResource( 5 )
-anims/side_walk = SubResource( 6 )
 
 [node name="shadow" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, 134.742 )
 texture = ExtResource( 24 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Camera" parent="." instance=ExtResource( 29 )]
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 11 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/back_idle = SubResource( 13 )
+anims/back_walk = SubResource( 14 )
+anims/front_idle = SubResource( 15 )
+anims/front_walk = SubResource( 16 )
+anims/side_idle = SubResource( 17 )
+anims/side_walk = SubResource( 18 )
