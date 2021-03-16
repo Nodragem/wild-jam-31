@@ -1,16 +1,16 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://art/tree1.png" type="Texture" id=1]
-[ext_resource path="res://art/ground.png" type="Texture" id=2]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Camera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/DebugStats.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/Level.gd" type="Script" id=6]
-[ext_resource path="res://scenes/Trees.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/GameScreen.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Trees.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/DebugStats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://art/ground.png" type="Texture" id=6]
+[ext_resource path="res://art/tree1.png" type="Texture" id=7]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ground.png 0"
-0/texture = ExtResource( 2 )
+0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 128, 128 )
@@ -48,9 +48,9 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 43.1 )
 }
 
-[node name="Level" type="Node"]
-script = ExtResource( 6 )
-Trees = ExtResource( 7 )
+[node name="GameScreen" type="Node"]
+script = ExtResource( 1 )
+Trees = ExtResource( 2 )
 y_limit = -6000
 nb_trees = 50
 
@@ -62,12 +62,12 @@ tile_data = PoolIntArray( -2555904, 0, 0, -2555903, 0, 0, -2555902, 0, 0, -25559
 
 [node name="Tree7" type="Sprite" parent="."]
 position = Vector2( 990.945, -4650.16 )
-texture = ExtResource( 1 )
+texture = ExtResource( 7 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 990.885, 919.25 )
 
-[node name="Camera" parent="." instance=ExtResource( 4 )]
+[node name="Camera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 960, 540 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
@@ -76,7 +76,7 @@ anims/CameraUp = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DebugStats" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="DebugStats" parent="CanvasLayer" instance=ExtResource( 4 )]
 margin_right = 698.0
 margin_bottom = 1056.0
 
