@@ -2,15 +2,26 @@ extends KinematicBody2D
 signal hit()
 
 export var speed = 400
+const BulletScn = preload("res://scenes/Bubble.tscn")
 var screen_size
 var screen_position
+var muzzle
 onready var camera_rig:Node2D = get_node("../../Camera")
 onready var state_machine = $AnimationTree.get("parameters/playback")
+
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
 
+func _input(event):
+	if event.is_action_pressed("fire"):
+		var bullet = BulletScn.instance()
+		owner.add_child(bullet)
+		bullet.set_owner(owner)
+		bullet.transform = muzzle.global_transform
+		
+		
 func _process(delta):
 	var velocity = Vector2()  # The player's movement vector.
 	if Input.is_action_pressed("ui_right"):
@@ -34,18 +45,26 @@ func _process(delta):
 	
 	if velocity.x != 0:
 		state_machine.travel("side_walk")
-		$side_body.scale.x = -1 if velocity.x < 0 else 1
+		if velocity.x < 0:
+			$side_body.scale.x = -1
+			muzzle = $FirePositionLEFT
+		else:
+			$side_body.scale.x = 1
+			muzzle = $FirePositionRIGHT
+			
 	elif velocity.y < 0:
 		state_machine.travel("back_walk")
+		muzzle = $FirePositionUP
 	elif velocity.y > 0:
 		state_machine.travel("front_walk")
+		muzzle = $FirePositionDOWN
 	elif velocity.y == 0:
 		state_machine.travel("front_idle")
+		muzzle = $FirePositionDOWN
 
 
 func _on_Player_body_exited(_body):
 	emit_signal("hit")
-
 
 func start(pos):
 	position = pos

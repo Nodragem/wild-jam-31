@@ -23,6 +23,8 @@ height = 51.0462
 
 [node name="Trees" type="StaticBody2D"]
 position = Vector2( 0.386321, -151.822 )
+collision_layer = 4
+collision_mask = 3
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -30,6 +32,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 25.4271 )
+scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
 animation = "tree2"
 

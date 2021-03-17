@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/front_walk1.png-8b390241b412d54c35f27bc06e25f981.stex"
+path="res://.import/bubble1.png-61fd1b74c740382389ae0bef42cbe268.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/front_walk1.png"
-dest_files=[ "res://.import/front_walk1.png-8b390241b412d54c35f27bc06e25f981.stex" ]
+source_file="res://art/vfx/bubble1.png"
+dest_files=[ "res://.import/bubble1.png-61fd1b74c740382389ae0bef42cbe268.stex" ]
 
 [params]
 
