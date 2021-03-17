@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Wild-jam- 31"
 run/main_scene="res://scenes/StartScreen.tscn"
 
+[autoload]
+
+DebugStats="*res://scenes/DebugStats.tscn"
+
 [display]
 
 window/size/width=1920
@@ -30,5 +34,4 @@ window/stretch/aspect="keep"
 
 [rendering]
 
-environment/default_clear_color=Color( 0.564706, 0.65098, 0.447059, 1 )
 environment/default_environment="res://default_env.tres"

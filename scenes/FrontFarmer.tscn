@@ -69,7 +69,7 @@ states/side_walk/node = SubResource( 5 )
 states/side_walk/position = Vector2( 8, 228 )
 transitions = [ "front_idle", "front_walk", SubResource( 6 ), "front_walk", "front_idle", SubResource( 7 ), "front_idle", "back_walk", SubResource( 8 ), "back_walk", "front_idle", SubResource( 9 ), "side_walk", "front_idle", SubResource( 10 ), "front_idle", "side_walk", SubResource( 11 ) ]
 start_node = "front_idle"
-graph_offset = Vector2( -186, 14.7214 )
+graph_offset = Vector2( -186, 145.971 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
@@ -1344,7 +1344,7 @@ texture = ExtResource( 21 )
 
 [node name="back_body" type="Sprite" parent="."]
 visible = false
-position = Vector2( 1.19477, 39.1183 )
+position = Vector2( 1.19475, 40.3888 )
 texture = ExtResource( 19 )
 __meta__ = {
 "_edit_group_": true,
@@ -1384,11 +1384,11 @@ position = Vector2( -51.6681, 47.7687 )
 texture = ExtResource( 26 )
 
 [node name="left_leg" type="Sprite" parent="back_body"]
-position = Vector2( -21.3005, 74.1937 )
+position = Vector2( -21.3005, 74.7992 )
 texture = ExtResource( 28 )
 
 [node name="right_leg" type="Sprite" parent="back_body"]
-position = Vector2( 24.418, 53.6111 )
+position = Vector2( 24.4178, 74.4655 )
 texture = ExtResource( 7 )
 
 [node name="shadow" type="Sprite" parent="."]
