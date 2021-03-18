@@ -5,7 +5,7 @@ export var speed = 400
 const BulletScn = preload("res://scenes/Bubble.tscn")
 var screen_size
 var screen_position
-var muzzle
+onready var muzzle = $FirePositionUP
 onready var camera_rig:Node2D = get_node("../../Camera")
 onready var state_machine = $AnimationTree.get("parameters/playback")
 
