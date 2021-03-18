@@ -43,6 +43,8 @@ func _process(delta):
 	position.y = clamp(position.y, screen_position.y, 
 		screen_position.y + screen_size.y)
 	
+	var current = state_machine.get_current_node()
+	
 	if velocity.x != 0:
 		state_machine.travel("side_walk")
 		if velocity.x < 0:
@@ -50,8 +52,7 @@ func _process(delta):
 			muzzle = $FirePositionLEFT
 		else:
 			$side_body.scale.x = 1
-			muzzle = $FirePositionRIGHT
-			
+			muzzle = $FirePositionRIGHT	
 	elif velocity.y < 0:
 		state_machine.travel("back_walk")
 		muzzle = $FirePositionUP
@@ -59,9 +60,12 @@ func _process(delta):
 		state_machine.travel("front_walk")
 		muzzle = $FirePositionDOWN
 	elif velocity.y == 0:
-		state_machine.travel("front_idle")
-		muzzle = $FirePositionDOWN
-
+		if current == 'front_walk':
+			state_machine.travel("front_idle")
+		elif current == 'back_walk':
+			state_machine.travel("back_idle")
+		elif current == 'side_walk':
+			state_machine.travel("side_idle")
 
 func _on_Player_body_exited(_body):
 	emit_signal("hit")
