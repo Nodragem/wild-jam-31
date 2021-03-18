@@ -1349,13 +1349,8 @@ texture = ExtResource( 18 )
 
 [node name="back_body" type="Sprite" parent="."]
 visible = false
-<<<<<<< HEAD:scenes/FrontFarmer.tscn
-position = Vector2( 1.19475, 40.3888 )
-texture = ExtResource( 19 )
-=======
 position = Vector2( 1.19477, 39.1183 )
 texture = ExtResource( 17 )
->>>>>>> 059c233 (add shooting bubbles with particle effect):scenes/Farmer.tscn
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -1394,21 +1389,12 @@ position = Vector2( -51.6681, 47.7687 )
 texture = ExtResource( 25 )
 
 [node name="left_leg" type="Sprite" parent="back_body"]
-<<<<<<< HEAD:scenes/FrontFarmer.tscn
-position = Vector2( -21.3005, 74.7992 )
-texture = ExtResource( 28 )
-
-[node name="right_leg" type="Sprite" parent="back_body"]
-position = Vector2( 24.4178, 74.4655 )
-texture = ExtResource( 7 )
-=======
 position = Vector2( -21.3005, 74.1937 )
 texture = ExtResource( 29 )
 
 [node name="right_leg" type="Sprite" parent="back_body"]
 position = Vector2( 24.418, 53.6111 )
 texture = ExtResource( 8 )
->>>>>>> 059c233 (add shooting bubbles with particle effect):scenes/Farmer.tscn
 
 [node name="shadow" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
