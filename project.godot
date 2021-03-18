@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Wild-jam- 31"
 run/main_scene="res://scenes/GameScreen.tscn"
 
+[autoload]
+
+AudioManager="*res://scripts/AudioManager.gd"
+
 [display]
 
 window/size/width=1920
