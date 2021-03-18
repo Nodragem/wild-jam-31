@@ -20,9 +20,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 41.7461, 93.3912 )
+extents = Vector2( 30.9345, 66.7305 )
 
 [node name="Larva" type="KinematicBody2D"]
+position = Vector2( 12.5992, 1.88988 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -39,6 +40,6 @@ autoplay = "LarvaMove"
 anims/LarvaMove = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.2599, 4.40968 )
+position = Vector2( -50.0368, 7.1995 )
 rotation = 1.5708
 shape = SubResource( 2 )

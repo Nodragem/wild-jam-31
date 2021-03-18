@@ -2,7 +2,7 @@
 
 [ext_resource path="res://art/vfx/bubble1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Bullet.gd" type="Script" id=2]
-[ext_resource path="res://scenes/BubbleParticles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/BubbleParticlesRed.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 28.0713

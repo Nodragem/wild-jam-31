@@ -34,68 +34,68 @@
 radius = 21.8121
 height = 40.0228
 
-[sub_resource type="AnimationNodeAnimation" id=2]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "back_idle"
 
-[sub_resource type="AnimationNodeAnimation" id=3]
+[sub_resource type="AnimationNodeAnimation" id=2]
 animation = "back_walk"
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "front_idle"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "front_walk"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=21]
 animation = "side_idle"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "side_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
-[sub_resource type="AnimationNodeStateMachine" id=20]
-states/back_idle/node = SubResource( 2 )
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/back_idle/node = SubResource( 20 )
 states/back_idle/position = Vector2( 667, 228 )
-states/back_walk/node = SubResource( 3 )
+states/back_walk/node = SubResource( 2 )
 states/back_walk/position = Vector2( 667, -34 )
-states/front_idle/node = SubResource( 4 )
+states/front_idle/node = SubResource( 3 )
 states/front_idle/position = Vector2( 263, 228 )
-states/front_walk/node = SubResource( 5 )
+states/front_walk/node = SubResource( 4 )
 states/front_walk/position = Vector2( 263, -34 )
-states/side_idle/node = SubResource( 6 )
+states/side_idle/node = SubResource( 21 )
 states/side_idle/position = Vector2( 461, 228 )
-states/side_walk/node = SubResource( 7 )
+states/side_walk/node = SubResource( 5 )
 states/side_walk/position = Vector2( 461, -34 )
-transitions = [ "front_idle", "front_walk", SubResource( 8 ), "front_walk", "front_idle", SubResource( 9 ), "front_idle", "back_walk", SubResource( 10 ), "front_idle", "side_walk", SubResource( 11 ), "side_idle", "back_walk", SubResource( 12 ), "back_walk", "back_idle", SubResource( 13 ), "back_idle", "back_walk", SubResource( 14 ), "side_idle", "front_walk", SubResource( 15 ), "back_idle", "front_walk", SubResource( 16 ), "side_idle", "side_walk", SubResource( 17 ), "side_walk", "side_idle", SubResource( 18 ), "back_idle", "side_walk", SubResource( 19 ) ]
+transitions = [ "front_idle", "front_walk", SubResource( 6 ), "front_walk", "front_idle", SubResource( 7 ), "front_idle", "back_walk", SubResource( 8 ), "front_idle", "side_walk", SubResource( 11 ), "side_idle", "back_walk", SubResource( 22 ), "back_walk", "back_idle", SubResource( 23 ), "back_idle", "back_walk", SubResource( 24 ), "side_idle", "front_walk", SubResource( 25 ), "back_idle", "front_walk", SubResource( 26 ), "side_idle", "side_walk", SubResource( 27 ), "side_walk", "side_idle", SubResource( 28 ), "back_idle", "side_walk", SubResource( 29 ) ]
 start_node = "back_idle"
 graph_offset = Vector2( -186, -133.214 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=14]
 length = 0.1
 loop = true
 step = 0.05
@@ -256,7 +256,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=15]
 length = 0.4
 loop = true
 step = 0.05
@@ -417,7 +417,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=16]
 length = 0.1
 loop = true
 step = 0.05
@@ -674,7 +674,7 @@ tracks/20/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=17]
 length = 0.4
 loop = true
 step = 0.05
@@ -931,7 +931,7 @@ tracks/20/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=18]
 length = 0.1
 loop = true
 step = 0.05
@@ -1080,7 +1080,7 @@ tracks/11/keys = {
 "values": [ Vector2( 31.3789, -67.4417 ) ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=19]
 length = 0.4
 loop = true
 step = 0.05
@@ -1324,7 +1324,6 @@ position = Vector2( -39.7166, 24.229 )
 texture = ExtResource( 7 )
 
 [node name="side_body" type="Sprite" parent="."]
-visible = false
 position = Vector2( 0, 40.375 )
 texture = ExtResource( 28 )
 __meta__ = {
@@ -1371,7 +1370,8 @@ position = Vector2( 31.3789, -67.4417 )
 texture = ExtResource( 18 )
 
 [node name="back_body" type="Sprite" parent="."]
-position = Vector2( 1.19475, 40.3888 )
+visible = false
+position = Vector2( 1.19477, 39.1183 )
 texture = ExtResource( 17 )
 __meta__ = {
 "_edit_group_": true,
@@ -1411,11 +1411,11 @@ position = Vector2( -51.6681, 47.7687 )
 texture = ExtResource( 25 )
 
 [node name="left_leg" type="Sprite" parent="back_body"]
-position = Vector2( -21.3005, 74.7992 )
+position = Vector2( -21.3005, 74.1937 )
 texture = ExtResource( 29 )
 
 [node name="right_leg" type="Sprite" parent="back_body"]
-position = Vector2( 24.4178, 74.4655 )
+position = Vector2( 24.418, 53.6111 )
 texture = ExtResource( 8 )
 
 [node name="shadow" type="Sprite" parent="."]
@@ -1427,17 +1427,17 @@ __meta__ = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 20 )
+tree_root = SubResource( 12 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 21 )
+parameters/playback = SubResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/back_idle = SubResource( 22 )
-anims/back_walk = SubResource( 23 )
-anims/front_idle = SubResource( 24 )
-anims/front_walk = SubResource( 25 )
-anims/side_idle = SubResource( 26 )
-anims/side_walk = SubResource( 27 )
+anims/back_idle = SubResource( 14 )
+anims/back_walk = SubResource( 15 )
+anims/front_idle = SubResource( 16 )
+anims/front_walk = SubResource( 17 )
+anims/side_idle = SubResource( 18 )
+anims/side_walk = SubResource( 19 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Tween" type="Tween" parent="."]

@@ -16,10 +16,15 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("fire"):
+		AudioManager.play("res://art/sound/shoot3.wav")
 		var bullet = BulletScn.instance()
 		owner.add_child(bullet)
 		bullet.set_owner(owner)
 		bullet.transform = muzzle.global_transform
+		var tween = $Tween
+		tween.interpolate_property(self, "position", position,
+		position-muzzle.global_transform.x*20, 0.15,Tween.TRANS_BOUNCE,Tween.EASE_IN,0)
+		tween.start()
 		
 		
 func _process(delta):
