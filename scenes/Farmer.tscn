@@ -1433,9 +1433,11 @@ active = true
 parameters/playback = SubResource( 21 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/back_idle = SubResource( 14 )
-anims/back_walk = SubResource( 15 )
-anims/front_idle = SubResource( 16 )
-anims/front_walk = SubResource( 17 )
-anims/side_idle = SubResource( 18 )
-anims/side_walk = SubResource( 19 )
+anims/back_idle = SubResource( 22 )
+anims/back_walk = SubResource( 23 )
+anims/front_idle = SubResource( 24 )
+anims/front_walk = SubResource( 25 )
+anims/side_idle = SubResource( 26 )
+anims/side_walk = SubResource( 27 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
