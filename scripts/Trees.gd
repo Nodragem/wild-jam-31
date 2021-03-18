@@ -14,7 +14,7 @@ func _on_LarvaTimer_timeout():
 	nb_larva += 1
 	var larva = LarvaScn.instance()
 	add_child(larva)
-	larva.transform = nest.global_transform
+	larva.global_transform = nest.global_transform
 	$LarvaTimer.wait_time = rand_range(2,6)
 	if nb_larva < max_larva:
 		$LarvaTimer.start()
