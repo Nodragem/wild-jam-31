@@ -51,8 +51,8 @@ tracks/1/keys = {
 [node name="Level" type="Node"]
 script = ExtResource( 1 )
 Trees = ExtResource( 2 )
-y_limit = -6000
-nb_trees = 50
+y_limit = -4000
+nb_trees = 30
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -63,7 +63,13 @@ tile_data = PoolIntArray( -2555904, 0, 0, -2555903, 0, 0, -2555902, 0, 0, -25559
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Tree7" type="Sprite" parent="YSort"]
-position = Vector2( 990.945, -4650.16 )
+position = Vector2( 196.265, -4150 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 7 )
+
+[node name="Tree8" type="Sprite" parent="YSort"]
+position = Vector2( 1757.12, -4150 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 7 )
 
 [node name="Farmer" parent="YSort" instance=ExtResource( 5 )]

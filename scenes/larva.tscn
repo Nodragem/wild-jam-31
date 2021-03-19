@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://art/weevil/larva.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Larva.gd" type="Script" id=2]
@@ -20,14 +20,16 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 30.9345, 66.7305 )
+extents = Vector2( 25.0652, 48.3693 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 78.6917, 37.9807 )
 
 [node name="Larva" type="KinematicBody2D"]
 position = Vector2( 12.5992, 1.88988 )
+collision_layer = 8
+collision_mask = 3
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.4729, 51.1955 )
@@ -40,6 +42,19 @@ autoplay = "LarvaMove"
 anims/LarvaMove = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -50.0368, 7.1995 )
+position = Vector2( -9.5009, -5.94125 )
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -8.94029, -5.5544 )
+collision_layer = 8
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1.18921, -0.594574 )
+shape = SubResource( 3 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

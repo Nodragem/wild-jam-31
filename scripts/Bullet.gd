@@ -14,3 +14,11 @@ func _on_Bubble_body_entered(body: Node) -> void:
 	particles.transform = global_transform
 	particles.emitting = true
 	queue_free()
+
+
+func _on_Bubble_area_entered(area):
+	var particles =  BubbleRedPcl.instance()
+	owner.add_child(particles)
+	particles.transform = global_transform
+	particles.emitting = true
+	queue_free()

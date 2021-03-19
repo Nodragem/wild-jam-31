@@ -72,8 +72,6 @@ func _process(delta):
 		elif current == 'side_walk':
 			state_machine.travel("side_idle")
 
-func _on_Player_body_exited(_body):
-	emit_signal("hit")
 
 func start(pos):
 	position = pos
@@ -82,3 +80,5 @@ func start(pos):
 
 
 
+func game_over():
+	pass # Replace with function body.
