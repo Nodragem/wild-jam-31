@@ -1441,4 +1441,3 @@ anims/side_idle = SubResource( 26 )
 anims/side_walk = SubResource( 27 )
 
 [node name="Tween" type="Tween" parent="."]
-[connection signal="hit" from="." to="." method="game_over"]
