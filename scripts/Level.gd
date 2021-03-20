@@ -6,6 +6,7 @@ export var nb_trees = 10
 
 
 func _ready():
+	$CanvasLayer/GameOverPanel.hide()
 	var rand = RandomNumberGenerator.new()
 	for i in range(0,nb_trees):
 		var trees = Trees.instance()
@@ -18,6 +19,9 @@ func _ready():
 		$YSort.add_child(trees)
 
 
-
 func _on_Farmer_dead() -> void:
-	$CanvasLayer/GAMEOVER.show()
+	$CanvasLayer/GameOverPanel.show()
+
+
+func _on_TryAgainButton_pressed() -> void:
+	get_tree().reload_current_scene()
