@@ -27,6 +27,7 @@ func _input(event):
 		tween.start()
 		
 		
+		
 func _process(delta):
 	var velocity = Vector2()  # The player's movement vector.
 	if Input.is_action_pressed("ui_right"):
