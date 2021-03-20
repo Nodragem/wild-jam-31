@@ -149,6 +149,7 @@ position = Vector2( 23.2802, -3990.92 )
 [connection signal="dead" from="YSort/Farmer" to="." method="_on_Farmer_dead"]
 [connection signal="fired" from="YSort/Farmer" to="CanvasLayer/OreganoProgress" method="_on_Farmer_fired"]
 [connection signal="hit" from="YSort/Farmer" to="CanvasLayer/LifeBar" method="_on_Farmer_hit"]
+[connection signal="no_bullets" from="YSort/Farmer" to="." method="_on_Farmer_no_bullets"]
 [connection signal="pressed" from="CanvasLayer/GameOverPanel/CenterContainer/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
 
 [editable path="Camera"]

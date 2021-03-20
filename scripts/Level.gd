@@ -32,3 +32,7 @@ func _on_Farmer_dead() -> void:
 
 func _on_TryAgainButton_pressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_Farmer_no_bullets() -> void:
+	$CanvasLayer/GameOverPanel.show()

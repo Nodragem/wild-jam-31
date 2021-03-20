@@ -43,6 +43,8 @@ func _input(event):
 		
 		
 func _process(delta):
+	if current_life <=0:
+		return
 	var velocity = Vector2()  # The player's movement vector.
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
@@ -99,6 +101,7 @@ func damage(ennemy):
 	emit_signal("hit", ennemy.damage)
 	if current_life <= 0:
 		emit_signal("dead")
+		state_machine.travel("front_dead")
 
 
 func game_over():
