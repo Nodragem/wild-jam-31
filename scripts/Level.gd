@@ -7,8 +7,8 @@ var max_prog
 var start_pos
 
 func _ready():
-	max_prog = ($StartPosition.position - $EndPosition.position).y
 	start_pos = $StartPosition.position.y
+	max_prog = abs($EndPosition.position.y - $StartPosition.position.y)
 	$CanvasLayer/GameOverPanel.hide()
 	var rand = RandomNumberGenerator.new()
 	for i in range(0,nb_trees):
@@ -22,7 +22,7 @@ func _ready():
 		$YSort.add_child(trees)
 
 func _process(delta):
-	var cur_prog = $YSort/Farmer.position.y - start_pos
+	var cur_prog = abs($YSort/Farmer.position.y - start_pos)
 	cur_prog = (cur_prog / max_prog)*100
 	$CanvasLayer/LevelProgress.value = cur_prog
 

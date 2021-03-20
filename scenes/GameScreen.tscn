@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Trees.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://art/ui/button_restart_hover.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/button_restart_clicked.png" type="Texture" id=12]
 [ext_resource path="res://scenes/LevelProgress.tscn" type="PackedScene" id=13]
+[ext_resource path="res://art/ui/ui_oregano.png" type="Texture" id=14]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ground.png 0"
@@ -139,13 +140,34 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
 
 [node name="LevelProgress" parent="CanvasLayer" instance=ExtResource( 13 )]
-margin_left = -27.0
+anchor_left = 0.0
+anchor_top = 1.0
+margin_left = 400.0
+margin_top = -165.0
+margin_right = -400.0
+margin_bottom = -100.0
+value = 60.0
+fill_mode = 0
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+margin_left = 307.013
+margin_top = 953.076
+margin_right = 413.013
+margin_bottom = 1049.08
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 5.14917, 35.364 )
+position = Vector2( 972.471, 1064.91 )
 
 [node name="EndPosition" type="Position2D" parent="."]
-position = Vector2( 23.2802, -3990.92 )
+position = Vector2( 956.661, -3990.92 )
 [connection signal="dead" from="YSort/Farmer" to="." method="_on_Farmer_dead"]
 [connection signal="fired" from="YSort/Farmer" to="CanvasLayer/OreganoProgress" method="_on_Farmer_fired"]
 [connection signal="hit" from="YSort/Farmer" to="CanvasLayer/LifeBar" method="_on_Farmer_hit"]
