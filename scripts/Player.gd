@@ -1,13 +1,20 @@
 extends KinematicBody2D
+
 signal hit
 signal no_bullets
 signal fired(value)
+signal hit(damage)
+signal dead()
 
 export var speed = 400
 export var bullets = 100
+export var max_life = 6
+var current_life = 0
+
 const BulletScn = preload("res://scenes/Bubble.tscn")
 var screen_size
 var screen_position
+
 onready var muzzle = $FirePositionUP
 onready var camera_rig:Node2D = get_node("../../Camera")
 onready var state_machine = $AnimationTree.get("parameters/playback")
@@ -16,7 +23,7 @@ onready var state_machine = $AnimationTree.get("parameters/playback")
 func _ready():
 	screen_size = get_viewport_rect().size
 	emit_signal("fired", bullets)
-
+	current_life = max_life
 
 func _input(event):
 	if event.is_action_pressed("fire") and bullets > 0:
@@ -87,6 +94,12 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
+
+func damage(ennemy):
+	current_life -= ennemy.damage
+	emit_signal("hit", ennemy.damage)
+	if current_life <= 0:
+		emit_signal("dead")
 
 
 func game_over():

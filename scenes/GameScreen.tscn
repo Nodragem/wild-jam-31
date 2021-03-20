@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Trees.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ui/LifeBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Farmer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://art/ground.png" type="Texture" id=6]
 [ext_resource path="res://art/tree1.png" type="Texture" id=7]
 [ext_resource path="res://scenes/OreganoProgress.tscn" type="PackedScene" id=8]
+[ext_resource path="res://art/font/Ranchers-Regular.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ground.png 0"
@@ -48,6 +50,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 43.1 )
 }
 
+[sub_resource type="DynamicFont" id=3]
+size = 100
+font_data = ExtResource( 8 )
+
 [node name="Level" type="Node"]
 script = ExtResource( 1 )
 Trees = ExtResource( 2 )
@@ -86,5 +92,22 @@ anims/CameraUp = SubResource( 2 )
 
 [node name="OreganoProgress" parent="CanvasLayer" instance=ExtResource( 8 )]
 [connection signal="fired" from="YSort/Farmer" to="CanvasLayer/OreganoProgress" method="_on_Farmer_fired"]
+[node name="LifeBar" parent="CanvasLayer" instance=ExtResource( 4 )]
+anchor_right = 0.167
+anchor_bottom = 0.064
+player_path = NodePath("../../YSort/Farmer")
+
+[node name="GAMEOVER" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -201.0
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center][wave amp=50 freq=2]GAME OVER[/wave][/center]"
+text = "GAME OVER"
+[connection signal="dead" from="YSort/Farmer" to="." method="_on_Farmer_dead"]
+[connection signal="hit" from="YSort/Farmer" to="CanvasLayer/LifeBar" method="_on_Farmer_hit"]
 
 [editable path="Camera"]

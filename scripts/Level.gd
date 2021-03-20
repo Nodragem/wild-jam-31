@@ -17,3 +17,7 @@ func _ready():
 		trees.position.x = x
 		$YSort.add_child(trees)
 
+
+
+func _on_Farmer_dead() -> void:
+	$CanvasLayer/GAMEOVER.show()

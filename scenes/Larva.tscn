@@ -58,3 +58,4 @@ __meta__ = {
 position = Vector2( 1.18921, -0.594574 )
 shape = SubResource( 3 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

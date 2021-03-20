@@ -1253,7 +1253,9 @@ tracks/13/keys = {
 "values": [ -40.9447, 31.1544, -4.89513, -40.9447 ]
 }
 
-[node name="Farmer" type="KinematicBody2D"]
+[node name="Farmer" type="KinematicBody2D" groups=[
+"player",
+]]
 scale = Vector2( 0.5, 0.5 )
 collision_mask = 5
 script = ExtResource( 1 )
