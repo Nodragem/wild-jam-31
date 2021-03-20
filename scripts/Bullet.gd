@@ -13,12 +13,15 @@ func _on_Bubble_body_entered(body: Node) -> void:
 	owner.add_child(particles)
 	particles.transform = global_transform
 	particles.emitting = true
+	particles.get_node("AudioStreamPlayer").play()
 	queue_free()
 
 
 func _on_Bubble_area_entered(area):
-	var particles =  BubbleRedPcl.instance()
-	owner.add_child(particles)
-	particles.transform = global_transform
-	particles.emitting = true
-	queue_free()
+	if area.is_in_group("enemy"):
+		var particles =  BubbleRedPcl.instance()
+		owner.add_child(particles)
+		particles.transform = global_transform
+		particles.emitting = true
+		particles.get_node("AudioStreamPlayer").play()
+		queue_free()

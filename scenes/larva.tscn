@@ -46,7 +46,9 @@ position = Vector2( -9.5009, -5.94125 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=[
+"enemy",
+]]
 position = Vector2( -8.94029, -5.5544 )
 collision_layer = 8
 collision_mask = 3

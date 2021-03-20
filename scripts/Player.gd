@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-signal hit
 signal no_bullets
 signal fired(value)
 signal hit(damage)
