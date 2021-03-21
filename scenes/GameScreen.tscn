@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Trees.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://art/ui/button_restart_clicked.png" type="Texture" id=12]
 [ext_resource path="res://scenes/LevelProgress.tscn" type="PackedScene" id=13]
 [ext_resource path="res://art/ui/ui_oregano.png" type="Texture" id=14]
+[ext_resource path="res://art/ui/end_icon.png" type="Texture" id=15]
+[ext_resource path="res://art/ui/start_icon.png" type="Texture" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ground.png 0"
@@ -146,19 +148,42 @@ margin_left = 400.0
 margin_top = -165.0
 margin_right = -400.0
 margin_bottom = -100.0
-value = 60.0
+value = 100.0
 fill_mode = 0
 stretch_margin_left = 3
 stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-margin_left = 307.013
-margin_top = 953.076
-margin_right = 413.013
-margin_bottom = 1049.08
+[node name="OreganoIcon" type="TextureRect" parent="CanvasLayer"]
+margin_left = 364.095
+margin_top = 986.374
+margin_right = 542.095
+margin_bottom = 1131.37
+rect_scale = Vector2( 0.517703, 0.517703 )
 texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartIcon" type="TextureRect" parent="CanvasLayer"]
+margin_left = 389.068
+margin_top = 905.508
+margin_right = 504.068
+margin_bottom = 1046.51
+rect_scale = Vector2( 0.569036, 0.569036 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndIcon" type="TextureRect" parent="CanvasLayer"]
+margin_left = 1474.81
+margin_top = 886.48
+margin_right = 1598.81
+margin_bottom = 1032.48
+rect_scale = Vector2( 0.670034, 0.670034 )
+texture = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
