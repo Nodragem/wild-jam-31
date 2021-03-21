@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Wild-jam- 31"
-run/main_scene="res://scenes/GameScreen.tscn"
+run/main_scene="res://scenes/StartScreen.tscn"
 
 [autoload]
 

@@ -36,3 +36,8 @@ func _on_TryAgainButton_pressed() -> void:
 
 func _on_Farmer_no_bullets() -> void:
 	$CanvasLayer/GameOverPanel.show()
+
+
+func _on_RobotWeevil_boss_dead() -> void:
+	yield(get_tree().create_timer(2), "timeout")
+	get_tree().change_scene("res://scenes/EndScene.tscn")

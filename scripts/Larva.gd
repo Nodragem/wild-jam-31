@@ -22,6 +22,7 @@ func _on_Area2D_area_entered(area):
 	speed = 0
 	dead = true
 	$CollisionShape2D.set_deferred("disabled", true)
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_Area2D_body_entered(body: Node) -> void:

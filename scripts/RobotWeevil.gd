@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
+signal boss_dead
 
 var current_state
 const ProjectileScn = preload("res://scenes/BossProjectile.tscn")
 var waiting_for_player = true
+var life = 50
 
 onready var state_machine = $AnimationTree.get("parameters/playback")
 onready var muzzle = $Muzzle
@@ -44,3 +46,12 @@ func _process(delta: float) -> void:
 
 func _on_attack_end() -> void:
 	$IdleTimer.start()
+
+
+func _on_Area2D_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bubble"):
+		life -= 1
+		$AnimationBlink.play("Blink")
+	if life <=0:
+		state_machine.travel("dead")
+		emit_signal("boss_dead")
