@@ -41,22 +41,20 @@ animation = "back_idle"
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "back_walk"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "front_dead"
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "front_idle"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "front_walk"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "side_idle"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "side_walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=8]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
 
@@ -80,41 +78,43 @@ animation = "side_walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
-[sub_resource type="AnimationNodeStateMachine" id=20]
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachine" id=27]
 states/back_idle/node = SubResource( 2 )
 states/back_idle/position = Vector2( 667, 228 )
 states/back_walk/node = SubResource( 3 )
 states/back_walk/position = Vector2( 667, -34 )
-states/front_dead/node = SubResource( 29 )
+states/front_dead/node = SubResource( 4 )
 states/front_dead/position = Vector2( -23, 94.786 )
-states/front_idle/node = SubResource( 4 )
+states/front_idle/node = SubResource( 5 )
 states/front_idle/position = Vector2( 263, 228 )
-states/front_walk/node = SubResource( 5 )
+states/front_walk/node = SubResource( 6 )
 states/front_walk/position = Vector2( 263, -34 )
-states/side_idle/node = SubResource( 6 )
+states/side_idle/node = SubResource( 7 )
 states/side_idle/position = Vector2( 461, 228 )
-states/side_walk/node = SubResource( 7 )
+states/side_walk/node = SubResource( 8 )
 states/side_walk/position = Vector2( 461, -34 )
-transitions = [ "front_idle", "front_walk", SubResource( 8 ), "front_walk", "front_idle", SubResource( 9 ), "front_idle", "back_walk", SubResource( 10 ), "front_idle", "side_walk", SubResource( 11 ), "side_idle", "back_walk", SubResource( 12 ), "back_walk", "back_idle", SubResource( 13 ), "back_idle", "back_walk", SubResource( 14 ), "side_idle", "front_walk", SubResource( 15 ), "back_idle", "front_walk", SubResource( 16 ), "side_idle", "side_walk", SubResource( 17 ), "side_walk", "side_idle", SubResource( 18 ), "back_idle", "side_walk", SubResource( 19 ), "front_walk", "front_dead", SubResource( 30 ), "front_idle", "front_dead", SubResource( 31 ), "side_walk", "front_dead", SubResource( 32 ), "side_idle", "front_dead", SubResource( 33 ), "back_walk", "front_dead", SubResource( 34 ), "back_idle", "front_dead", SubResource( 35 ) ]
+transitions = [ "front_idle", "front_walk", SubResource( 9 ), "front_walk", "front_idle", SubResource( 10 ), "front_idle", "back_walk", SubResource( 11 ), "front_idle", "side_walk", SubResource( 12 ), "side_idle", "back_walk", SubResource( 13 ), "back_walk", "back_idle", SubResource( 14 ), "back_idle", "back_walk", SubResource( 15 ), "side_idle", "front_walk", SubResource( 16 ), "back_idle", "front_walk", SubResource( 17 ), "side_idle", "side_walk", SubResource( 18 ), "side_walk", "side_idle", SubResource( 19 ), "back_idle", "side_walk", SubResource( 20 ), "front_walk", "front_dead", SubResource( 21 ), "front_idle", "front_dead", SubResource( 22 ), "side_walk", "front_dead", SubResource( 23 ), "side_idle", "front_dead", SubResource( 24 ), "back_walk", "front_dead", SubResource( 25 ), "back_idle", "front_dead", SubResource( 26 ) ]
 start_node = "back_idle"
 end_node = "front_dead"
 graph_offset = Vector2( -186, -133.214 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=28]
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=29]
 length = 0.1
 loop = true
 step = 0.05
@@ -275,7 +275,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=30]
 length = 0.4
 loop = true
 step = 0.05
@@ -436,8 +436,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=28]
-resource_name = "front_dead"
+[sub_resource type="Animation" id=31]
 length = 0.1
 loop = true
 step = 0.05
@@ -742,7 +741,7 @@ tracks/24/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=32]
 length = 0.1
 loop = true
 step = 0.05
@@ -1023,7 +1022,7 @@ tracks/22/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=33]
 length = 0.4
 loop = true
 step = 0.05
@@ -1304,7 +1303,7 @@ tracks/22/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=34]
 length = 0.1
 loop = true
 step = 0.05
@@ -1453,7 +1452,7 @@ tracks/11/keys = {
 "values": [ Vector2( 31.3789, -67.4417 ) ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=35]
 length = 0.4
 loop = true
 step = 0.05
@@ -1808,18 +1807,18 @@ position = Vector2( 24.4178, 74.4655 )
 texture = ExtResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 20 )
+tree_root = SubResource( 27 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 21 )
+parameters/playback = SubResource( 28 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/back_idle = SubResource( 22 )
-anims/back_walk = SubResource( 23 )
-anims/front_dead = SubResource( 28 )
-anims/front_idle = SubResource( 24 )
-anims/front_walk = SubResource( 25 )
-anims/side_idle = SubResource( 26 )
-anims/side_walk = SubResource( 27 )
+anims/back_idle = SubResource( 29 )
+anims/back_walk = SubResource( 30 )
+anims/front_dead = SubResource( 31 )
+anims/front_idle = SubResource( 32 )
+anims/front_walk = SubResource( 33 )
+anims/side_idle = SubResource( 34 )
+anims/side_walk = SubResource( 35 )
 
 [node name="Tween" type="Tween" parent="."]
