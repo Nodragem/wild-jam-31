@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Trees.tscn" type="PackedScene" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/ui/LifeBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Farmer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://art/ground.png" type="Texture" id=6]
-[ext_resource path="res://art/tree1.png" type="Texture" id=7]
+[ext_resource path="res://scenes/TreesAlone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/OreganoProgress.tscn" type="PackedScene" id=8]
 [ext_resource path="res://art/font/Ranchers-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://art/ui/button_restart.png" type="Texture" id=10]
@@ -69,7 +69,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 960, -0.25, 0, 0.25, 0, 960, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 43.1 )
+"times": PoolRealArray( 0, 2 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath(".:position:y")
@@ -79,12 +79,28 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "points": PoolRealArray( 540, -0.25, 0, 0.372294, 20.866, -4452.36, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 43.1 )
+"times": PoolRealArray( 0, 2 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../BossReference/RobotWeevil")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "" ],
+"method": "_on_CameraAnimation_animation_finished"
+} ]
 }
 
 [sub_resource type="DynamicFont" id=4]
 size = 100
 font_data = ExtResource( 9 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
 [node name="Level" type="Node"]
 script = ExtResource( 1 )
@@ -100,24 +116,19 @@ tile_data = PoolIntArray( -2555904, 1, 0, -2555903, 1, 0, -2555902, 1, 0, -25559
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Tree7" type="Sprite" parent="YSort"]
-position = Vector2( 196.265, -4150 )
+[node name="Trees2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 196.265, -4219.85 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 7 )
 
-[node name="Tree8" type="Sprite" parent="YSort"]
-position = Vector2( 1757.12, -4150 )
+[node name="Trees" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1757.12, -4219.85 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 7 )
 
 [node name="Farmer" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1014.5, 718.745 )
 
-[node name="RobotWeevil" parent="YSort" instance=ExtResource( 18 )]
-position = Vector2( 954.056, -4797.25 )
-
 [node name="Camera" parent="." instance=ExtResource( 3 )]
-position = Vector2( 960, 540 )
+position = Vector2( 960, 5.96743 )
 
 [node name="CameraAnimation" type="AnimationPlayer" parent="Camera"]
 autoplay = "CameraUp"
@@ -221,11 +232,63 @@ position = Vector2( 972.471, 1064.91 )
 
 [node name="EndPosition" type="Position2D" parent="."]
 position = Vector2( 956.661, -3990.92 )
+
+[node name="BossReference" type="Position2D" parent="."]
+position = Vector2( 0, -5003.02 )
+
+[node name="RobotWeevil" parent="BossReference" instance=ExtResource( 18 )]
+position = Vector2( 985.405, 313.366 )
+
+[node name="body2" parent="BossReference/RobotWeevil" index="2"]
+position = Vector2( 0, -10.6045 )
+
+[node name="body1" parent="BossReference/RobotWeevil/body2" index="0"]
+rotation = 0.0552919
+
+[node name="head2x" parent="BossReference/RobotWeevil/body2/body1" index="0"]
+scale = Vector2( 1.26151, 0.974714 )
+
+[node name="trump2x" parent="BossReference/RobotWeevil/body2/body1/head2x" index="0"]
+scale = Vector2( 1.10627, 0.881119 )
+
+[node name="right_leg_top1" parent="BossReference/RobotWeevil/body2" index="1"]
+rotation = 0.0580458
+
+[node name="right_leg_midle2x" parent="BossReference/RobotWeevil/body2/right_leg_top1" index="0"]
+rotation = -0.0526348
+
+[node name="right_leg_bottom2x" parent="BossReference/RobotWeevil/body2/right_leg_top1/right_leg_midle2x" index="0"]
+rotation = -0.034659
+
+[node name="right_leg_top3" parent="BossReference/RobotWeevil/body2" index="2"]
+scale = Vector2( 0.973532, 0.874025 )
+
+[node name="right_leg_top2" parent="BossReference/RobotWeevil/body2" index="3"]
+scale = Vector2( 1.00194, 1.03045 )
+
+[node name="left_leg_top1" parent="BossReference/RobotWeevil/body2" index="4"]
+rotation = -0.0603075
+
+[node name="right_leg_midle2x" parent="BossReference/RobotWeevil/body2/left_leg_top1" index="0"]
+rotation = -0.0620084
+
+[node name="right_leg_bottom2x" parent="BossReference/RobotWeevil/body2/left_leg_top1/right_leg_midle2x" index="0"]
+rotation = -0.0340277
+
+[node name="left_leg_top3" parent="BossReference/RobotWeevil/body2" index="5"]
+scale = Vector2( 0.983833, -0.873807 )
+
+[node name="left_leg_top2" parent="BossReference/RobotWeevil/body2" index="6"]
+scale = Vector2( -1.00742, 1.03071 )
+
+[node name="AnimationTree" parent="BossReference/RobotWeevil" index="4"]
+parameters/playback = SubResource( 5 )
 [connection signal="dead" from="YSort/Farmer" to="." method="_on_Farmer_dead"]
 [connection signal="fired" from="YSort/Farmer" to="CanvasLayer/OreganoProgress" method="_on_Farmer_fired"]
 [connection signal="hit" from="YSort/Farmer" to="CanvasLayer/LifeBar" method="_on_Farmer_hit"]
 [connection signal="no_bullets" from="YSort/Farmer" to="." method="_on_Farmer_no_bullets"]
-[connection signal="animation_finished" from="Camera/CameraAnimation" to="YSort/RobotWeevil" method="_on_CameraAnimation_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/GameOverPanel/CenterContainer/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
 
 [editable path="Camera"]
+
+[editable path="BossReference/RobotWeevil"]

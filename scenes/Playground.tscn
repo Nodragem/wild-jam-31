@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/RobotWeevil.tscn" type="PackedScene" id=1]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RobotWeevil" parent="." instance=ExtResource( 1 )]
+
+[node name="body2" parent="RobotWeevil" index="2"]
+position = Vector2( 0, -8.76952 )
+
+[node name="body1" parent="RobotWeevil/body2" index="0"]
+rotation = 0.0457244
+
+[node name="head2x" parent="RobotWeevil/body2/body1" index="0"]
+scale = Vector2( 1.26151, 0.960114 )
+
+[node name="trump2x" parent="RobotWeevil/body2/body1/head2x" index="0"]
+scale = Vector2( 1.09919, 0.889039 )
+
+[node name="right_leg_top1" parent="RobotWeevil/body2" index="1"]
+rotation = 0.0480017
+
+[node name="right_leg_midle2x" parent="RobotWeevil/body2/right_leg_top1" index="0"]
+rotation = -0.043527
+
+[node name="right_leg_bottom2x" parent="RobotWeevil/body2/right_leg_top1/right_leg_midle2x" index="0"]
+rotation = -0.0286617
+
+[node name="right_leg_top3" parent="RobotWeevil/body2" index="2"]
+scale = Vector2( 0.972902, 0.868276 )
+
+[node name="right_leg_top2" parent="RobotWeevil/body2" index="3"]
+scale = Vector2( 1.0016, 1.02518 )
+
+[node name="left_leg_top1" parent="RobotWeevil/body2" index="4"]
+rotation = -0.0498721
+
+[node name="right_leg_midle2x" parent="RobotWeevil/body2/left_leg_top1" index="0"]
+rotation = -0.0512787
+
+[node name="right_leg_bottom2x" parent="RobotWeevil/body2/left_leg_top1/right_leg_midle2x" index="0"]
+rotation = -0.0281397
+
+[node name="left_leg_top3" parent="RobotWeevil/body2" index="5"]
+scale = Vector2( 0.981439, -0.86813 )
+
+[node name="left_leg_top2" parent="RobotWeevil/body2" index="6"]
+scale = Vector2( -1.00614, 1.0254 )
+
+[node name="AnimationTree" parent="RobotWeevil" index="4"]
+parameters/playback = SubResource( 1 )
+
+[node name="IdleTimer" parent="RobotWeevil" index="6"]
+wait_time = 3.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = 241.606
+margin_top = 425.814
+margin_right = 253.606
+margin_bottom = 445.814
+rect_scale = Vector2( 20.3753, 4.2532 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[connection signal="pressed" from="Button" to="RobotWeevil" method="_on_Button_pressed"]
+
+[editable path="RobotWeevil"]
