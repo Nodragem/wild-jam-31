@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hazelnut_shot.wav-0b0cc30bd5692e2d5924e433f9ba8088.sample"
+
+[deps]
+
+source_file="res://art/sound/hazelnut_shot.wav"
+dest_files=[ "res://.import/hazelnut_shot.wav-0b0cc30bd5692e2d5924e433f9ba8088.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
