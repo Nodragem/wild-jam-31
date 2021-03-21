@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://art/weevil/weevil_frames.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Weevil.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "WeevilDead"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "WeevilMove"
+length = 0.799
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1.03526 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 2, 1 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 19.9242
+height = 60.2932
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 30.1048
+height = 62.0146
+
+[node name="Weevil" type="KinematicBody2D"]
+position = Vector2( 12.5992, 1.88988 )
+collision_layer = 8
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -10.2373, -7.07581 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 1 )
+flip_h = true
+hframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "WeevilMove"
+anims/WeevilDead = SubResource( 1 )
+anims/WeevilMove = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3.80623, -14.3625 )
+rotation = 1.5439
+shape = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"enemy",
+]]
+position = Vector2( 5.54877, -11.854 )
+collision_layer = 8
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 2.84099, -2.01038 )
+rotation = 1.57079
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
