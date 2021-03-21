@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Trees.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://art/ui/end_icon.png" type="Texture" id=15]
 [ext_resource path="res://art/ui/start_icon.png" type="Texture" id=16]
 [ext_resource path="res://art/wall@2x.png" type="Texture" id=17]
+[ext_resource path="res://scenes/RobotWeevil.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -112,10 +113,13 @@ texture = ExtResource( 7 )
 [node name="Farmer" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1014.5, 718.745 )
 
+[node name="RobotWeevil" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 954.056, -4797.25 )
+
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 960, 540 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
+[node name="CameraAnimation" type="AnimationPlayer" parent="Camera"]
 autoplay = "CameraUp"
 anims/CameraUp = SubResource( 3 )
 
@@ -221,6 +225,7 @@ position = Vector2( 956.661, -3990.92 )
 [connection signal="fired" from="YSort/Farmer" to="CanvasLayer/OreganoProgress" method="_on_Farmer_fired"]
 [connection signal="hit" from="YSort/Farmer" to="CanvasLayer/LifeBar" method="_on_Farmer_hit"]
 [connection signal="no_bullets" from="YSort/Farmer" to="." method="_on_Farmer_no_bullets"]
+[connection signal="animation_finished" from="Camera/CameraAnimation" to="YSort/RobotWeevil" method="_on_CameraAnimation_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/GameOverPanel/CenterContainer/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
 
 [editable path="Camera"]
